@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 //use App\Http\Requests\RemaRequest;
+
+use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use http\Message;
 use Illuminate\Http\Request;
@@ -29,19 +31,19 @@ public function create()
 {
     return view('offers.create');
 }
-    public function store(Request $request)
+    public function store(OfferRequest $request)
     {
 
 
         //validate data before insert to database
         //
 
-            $rules=$this->getRules();
-            $messages=$this->getMessages();
-        $validator= Validator::make($request->all(),$rules,$messages);
-        if($validator ->fails()) {
-            return redirect()->back()->withErrors($validator)->withInputs($request->all());
-        }
+        //     $rules=$this->getRules();
+        //     $messages=$this->getMessages();
+        //  $validator= Validator::make($messages);
+        // if($validator ->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInputs($request->all());
+        // }
         Offer::create([
             'id'=>$request->id,
             'name'=>$request ->name,
@@ -50,24 +52,29 @@ public function create()
         return redirect()->back()->with(['success'=>'تمت اضافه العرض بنجاح ']);
 
     }
-    protected function getMessages(){
-        return
-        $mesages=[
-            'id.required' =>__('masseges.offer id required'),
-            'name.required'=>__('masseges.offer name required'),
-            'name.max'=>__('masseges.offer name max'),
-            'price.numeric'=>'السعر يجب ان يكون رقما',
-            ];
-    }
-    protected function getRules(){
-        return
-        $rules=
-        [
-            'id'=>'required',
-            'name'=>'required |max:100',
-            'price'=>'required |numeric',
-        ];
+    // protected function getMessages(){
+    //     return
+    //     $mesages=[
+    //         'id.required' =>__('masseges.offer id required'),
+    //         'name.required'=>__('masseges.offer name required'),
+    //         'name.max'=>__('masseges.offer name max'),
+    //         'price.numeric'=>'السعر يجب ان يكون رقما',
+    //         ];
+    // }
+    // protected function getRules(){
+    //     return
+    //     $rules=
+    //     [
+    //         'id'=>'required',
+    //         'name'=>'required |max:100',
+    //         'price'=>'required |numeric',
+    //     ];
 
+    // }
+    public function getAllOffer(){
+
+       $offers= Offer::select('id','name','price')->get();
+       return view('offers.all',compact('offers'));
     }
 }
 

@@ -16,7 +16,8 @@ return [
 'guse'=>'شباب',
 "offer id required"=>'رقم العرض مطلوب',
 "offer name required" =>'اسم العرض مطلوب',
-//"offer name max"=>'الاسم يجب ان يكون اطول من 10',
+"offer price numeric"=>'السعر يجب ان يكون اطول من 10',
+"OfferName"=>'اسم العرض',
 
 
 ];

@@ -17,7 +17,7 @@ return [
     'guse' => 'GUSE',
     "offer id required"=> 'offer id required',
     "offer name required"=> 'offer name required',
-    //"offer name max"=>'الاسم يجب ان يكون اطول من 10',
+    " offer price numeric"=>'offer price must be over 10',
 
 
 

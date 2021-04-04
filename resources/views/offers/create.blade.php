@@ -76,7 +76,7 @@
                 @endif
 
             <br>
-            <form method="post" action ="{{route('offers.store')}}">
+            <form  action ="{{route('offers.store')}}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="disabledTextInput">Id</label>

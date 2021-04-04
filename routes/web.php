@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use Mcamara\LaravelLocalization\LaravelLocalization;
+//use Mcamara\LaravelLocalization;
+use app\mail\notifyEmail;
+use Illuminate\Support\Facades\mail;
 
 use \Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 /*
@@ -82,12 +84,21 @@ route::group(['namespace' => 'Front'] ,function() {
 
 //route::get('login2' ,'RemaController@store');
 route::get('fialable','CrudController@getoffer');
-route::group(['prefix'=>'offers'],function(){
-   Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-    {
-        route::get('create','CrudController@create');
-   });
-    route::post('store','CrudController@store')-> name('offers.store');
+Route::group(['prefix'=>'offers'],function(){
+            Route::group(
+                        [
+              'prefix' => LaravelLocalization::setLocale(),
+                            'middleware' => [ 'localeSessionRedirect',
+                             'localizationRedirect', 'localeViewPath',
+                              ]
+                     ],
+                      function(){
+
+        Route::get('create','CrudController@create');
+    });
+    Route::post('store','CrudController@store')-> name('offers.store');
+
+    Route::get('all','CrudController@getAllOffer');
 
 });
 Route::get('hala', function () {
