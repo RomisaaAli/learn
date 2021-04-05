@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 //use Mcamara\LaravelLocalization;
 use app\mail\notifyEmail;
 use Illuminate\Support\Facades\mail;
+use Mcamara\LaravelLocalization\LaravelLocalization;
 
-use \Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+//use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
+//use \Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,7 +67,7 @@ route::group(['namespace' => 'Front'] ,function() {
 //طريقه كتابه ال middleware في group
 //}
 });
-//route::group(['namespace' => 'Front'] ,function() {
+//6route::group(['namespace' => 'Front'] ,function() {
 //    route::get('second1', 'FristController@showAdminName1');
 //});
 //
@@ -84,15 +87,15 @@ route::group(['namespace' => 'Front'] ,function() {
 
 //route::get('login2' ,'RemaController@store');
 route::get('fialable','CrudController@getoffer');
-Route::group(['prefix'=>'offers'],function(){
-            Route::group(
-                        [
-              'prefix' => LaravelLocalization::setLocale(),
-                            'middleware' => [ 'localeSessionRedirect',
-                             'localizationRedirect', 'localeViewPath',
-                              ]
-                     ],
-                      function(){
+
+
+            Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)->setLocale(),
+              'middleware' => [ 'localeSessionRedirect',
+              'localizationRedirect','localeViewPath',
+                             ]
+],
+              function(){Route::group(['prefix'=>'offers'],function()
+              {
 
         Route::get('create','CrudController@create');
     });
