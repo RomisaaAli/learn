@@ -17,7 +17,17 @@ return [
     'guse' => 'GUSE',
     "offer id required"=> 'offer id required',
     "offer name required"=> 'offer name required',
-    " offer price numeric"=>'offer price must be over 10',
+    "offer name max"=> 'offer name must be over 10',
+    "offer price numeric"=>'offer price must be over 10',
+    "Add Your Offer"=>'Add New Offer',
+    "Add Your Id"=>'Add Your Id',
+    "Add Your Offer Name"=>'Add Your Offer Name',
+    "Add Your Offer price"=>'Add Your Offer price',
+    "Offer Name"=>'Offer Name',
+   "Offer price"=>'Offer Price',
+    "Save Offer"=>'Save',
+
+
 
 
 

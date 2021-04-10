@@ -16,9 +16,15 @@ return [
 'guse'=>'شباب',
 "offer id required"=>'رقم العرض مطلوب',
 "offer name required" =>'اسم العرض مطلوب',
-"offer price numeric"=>'السعر يجب ان يكون اطول من 10',
-"OfferName"=>'اسم العرض',
-
+"offer name max"=> 'الاسم يجب ان يكون اطول من 2',
+"offer price numeric"=>'السعر يجب ان يكون رقم ',
+"Add Your Offer" =>'اضافه عرض جديد',
+"Add Your Id"=>'إضافه رقم جديد',
+'Add Your Offer Name'=>'إضافه اسم جديد',
+"Add Your Offer price"=> 'اضافه السعر',
+"Offer Name"=>'اسم العرض',
+"Offer price"=>'سعر العرض',
+"Save Offer"=>'حفظ',
 
 ];
 

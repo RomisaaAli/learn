@@ -73,26 +73,13 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
+            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+        <li class="nav-item active">
+    <a class="nav-link" href="{{ LaravelLocalization::getLocalizedURL($localeCode,null, [], true) }}">
+        {{ $properties['native'] }} <span class="sr-only">(current)</span></a>
+        </li>
+            @endforeach
+
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -105,7 +92,7 @@
 <div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
-            Laravel
+            {{__('masseges.Add Your Offer')}}
             @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
                 {{(Session::get('success'))}}
@@ -113,34 +100,38 @@
                 @endif
 
             <br>
+            <br>
             <form  action ="{{route('offers.store')}}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="disabledTextInput">Id</label>
+                    <label for="disabledTextInput"> {{__('masseges.Add Your Id')}}</label>
 
 
-                    <input type="text"  class="form-control" name="id"  placeholder="Disabled input">
+                    <input type="text"  class="form-control" name="id"
+                     placeholder="{{__('masseges.Add Your Id')}}">
                     @error('id')
                     <small class="form-text text-danger" >{{$message}}</small>
                     @enderror
                 </div>
                 <div class="form-group">
-                        <label for="disabledTextInput">OfferName</label>
-                        <input type="text"  class="form-control" name="name" placeholder="Disabled input">
+                        <label for="disabledTextInput"> {{__('masseges.Add Your Offer Name')}}</label>
+                        <input type="text"  class="form-control" name="name" placeholder=
+                        "{{__('masseges.Add Your Offer Name')}}">
                         @error('name')
                         <small class=" form-text text-danger" >{{$message}}</small>
                         @enderror
                     </div>
                 <div class="form-group">
-                    <label for="disabledTextInput">price</label>
-                    <input type="text"  class="form-control" name="price"  placeholder="Disabled input">
+                    <label for="disabledTextInput"> {{__('masseges.Add Your Offer price')}}</label>
+                    <input type="text"  class="form-control" name="price"
+                     placeholder="{{__('masseges.Add Your Offer price')}}">
                     @error('price')
                     <small class="form-text text-danger" >{{$message}}</small>
                     @enderror
                 </div>
 
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">{{__('masseges.Save Offer')}}</button>
                 </fieldset>
             </form>
         </div>

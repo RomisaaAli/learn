@@ -98,11 +98,9 @@ route::get('fialable','CrudController@getoffer');
               {
 
         Route::get('create','CrudController@create');
+        Route::post('store','CrudController@store')-> name('offers.store');
+        Route::get('all','CrudController@getAllOffer');
     });
-    Route::post('store','CrudController@store')-> name('offers.store');
-
-    Route::get('all','CrudController@getAllOffer');
-
 });
 Route::get('hala', function () {
   return view('dashboard');
