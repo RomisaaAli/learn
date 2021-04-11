@@ -87,9 +87,7 @@
           </form>
         </div>
       </nav>
-
-
-<div class="flex-center position-ref full-height">
+ٍ<div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
             {{__('masseges.Add Your Offer')}}
@@ -114,10 +112,19 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                        <label for="disabledTextInput"> {{__('masseges.Add Your Offer Name')}}</label>
-                        <input type="text"  class="form-control" name="name" placeholder=
-                        "{{__('masseges.Add Your Offer Name')}}">
-                        @error('name')
+                        <label for="disabledTextInput"> {{__('masseges.Add Your Offer Name_en')}}</label>
+                        <input type="text"  class="form-control" name="name_en" placeholder=
+                        "{{__('masseges.Add Your Offer Name_en')}}">
+                        @error('name_en')
+                        <small class=" form-text text-danger" >{{$message}}</small>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="disabledTextInput"> {{__('masseges.Add Your Offer Name_ar')}}</label>
+                        <input type="text"  class="form-control" name="name_ar" placeholder=
+                        "{{__('masseges.Add Your Offer Name_ar')}}">
+                        @error('name_ar')
                         <small class=" form-text text-danger" >{{$message}}</small>
                         @enderror
                     </div>

@@ -25,12 +25,14 @@ class OfferRequest extends FormRequest
             return
             $mesages=[
                 'id.required' =>__('masseges.offer id required'),
-                'name.required'=>__('masseges.offer name required'),
+                'name_en.required'=>__('masseges.offer name required'),
+                'name_ar.required'=>__('masseges.offer name required'),
                 'name.max'=>__('masseges.offer name max'),
                 'price.numeric'=>__('masseges.offer price numeric'),
                 'Add Your Offer'=>__('masseges.Add Your Offer'),
                 'Add Your Id'=>__('masseges.Add Your Id'),
-                'Add Your Offer Name'=>__('masseges.Add Your Offer Name'),
+                'Add Your Offer Name_en'=>__('masseges.Add Your Offer Name_en'),
+                'Add Your Offer Nam_ar'=>__('masseges.Add Your Offer Name_ar'),
                 'Add Your Offer price'=>__('masseges.Add Your Offer price'),
                 "Offer Name"=>__('masseges.Offer Name'),
                 "Offer Price"=>__('masseges.Offer price'),
@@ -43,7 +45,8 @@ class OfferRequest extends FormRequest
     {
         return [
             'id'=>'required',
-             'name'=>'required|max:10',
+             'name_en'=>'required|max:10',
+             'name_ar'=>'required|max:10',
              'price'=>'required',
              'price'=>'numeric',
         ];
