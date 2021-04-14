@@ -90,7 +90,7 @@
 ٍ<div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
-            {{__('masseges.Add Your Offer')}}
+            {{__('masseges.Upate Your Offer')}}
             @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
                 {{(Session::get('success'))}}
@@ -99,30 +99,25 @@
 
             <br>
             <br>
-            <form  action ="{{route('offers.store')}}" method="post" enctype="multipart/form-data">
+            <form  action ="{{route('offers.update',$offer->id)}}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="disabledTextInput"> {{__('masseges.Add Your Id')}}</label>
+                    <label for="disabledTextInput">
+                         {{__('masseges.Add Your Id')}}</label>
 
 
                     <input type="text"  class="form-control" name="id"
+                    value="{{$offer->id}}"
                      placeholder="{{__('masseges.Add Your Id')}}">
                     @error('id')
                     <small class="form-text text-danger" >{{$message}}</small>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="disabledTextInput"> {{__('masseges.Add Your Photo')}}</label>
-                    <input type="file"  class="form-control" name="photo" placeholder=
-                    "{{__('masseges.Add Your Photo')}}">
-                    @error('name_en')
-                    <small class=" form-text text-danger" >{{$message}}</small>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                        <label for="disabledTextInput"> {{__('masseges.Add Your Offer Name_en')}}</label>
-                        <input type="text"  class="form-control" name="name_en" placeholder=
+                        <label for="disabledTextInput">
+                            {{__('masseges.Add Your Offer Name_en')}}</label>
+                        <input type="text"  class="form-control"
+                         name="name_en" value="{{$offer->name_en}}" placeholder=
                         "{{__('masseges.Add Your Offer Name_en')}}">
                         @error('name_en')
                         <small class=" form-text text-danger" >{{$message}}</small>
@@ -130,35 +125,33 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="disabledTextInput"> {{__('masseges.Add Your Offer Name_ar')}}</label>
-                        <input type="text"  class="form-control" name="name_ar" placeholder=
+                        <label for="disabledTextInput">
+                            {{__('masseges.Add Your Offer Name_ar')}}</label>
+                        <input type="text"  class="form-control"
+                         name="name_ar" value="{{$offer->name_ar}}" placeholder=
                         "{{__('masseges.Add Your Offer Name_ar')}}">
                         @error('name_ar')
                         <small class=" form-text text-danger" >{{$message}}</small>
                         @enderror
                     </div>
                 <div class="form-group">
-                    <label for="disabledTextInput"> {{__('masseges.Add Your Offer price')}}</label>
+                    <label for="disabledTextInput">
+                        {{__('masseges.Add Your Offer price')}}</label>
                     <input type="text"  class="form-control" name="price"
-                     placeholder="{{__('masseges.Add Your Offer price')}}">
+                    value="{{$offer->price}}" placeholder="{{__('masseges.Add Your Offer price')}}">
                     @error('price')
                     <small class="form-text text-danger" >{{$message}}</small>
                     @enderror
                 </div>
 
 
-                    <button type="submit" class="btn btn-primary">{{__('masseges.Save Offer')}}</button>
+                    <button type="submit" class="btn btn-primary">
+                        {{__('masseges.Save Offer')}}</button>
                 </fieldset>
             </form>
         </div>
 
         <div class="links">
-            {{--                    <h1> {{_('massages.hello')}}</h1>--}}
-            {{--                    <p>{{ $obj->name }}...{{$obj->id}}..{{$obj->gender}}</p>--}}
-            {{--                    <a href="{{route('b')}}">b</a>--}}
-            {{--
-
-            --}}
 
         </div>
     </div>

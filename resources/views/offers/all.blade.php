@@ -93,6 +93,7 @@
             <th scope="col"></th>
             <th scope="col">{{__('masseges.Offer Name')}}</th>
             <th scope="col">{{__('masseges.Offer price')}}</th>
+            <th scope="col">{{__('masseges.operation')}}</th>
           </tr>
         </thead>
         <tbody>
@@ -101,6 +102,9 @@
             <th scope="row">{{$offer ->id}}</th>
             <td>{{$offer ->name}}</td>
             <td>{{$offer ->price}}</td>
+            <td>{{$offer ->operation}}
+           <a href="{{url('offers/edit/'.$offer ->id)}}"
+             class="btn btn-success">{{__('masseges.update')}}</a></td>
           </tr>
           @endforeach
         </tbody>

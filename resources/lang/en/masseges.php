@@ -26,7 +26,12 @@ return [
     "Add Your Offer price"=>'Add Your Offer price',
     "Offer Name"=>'Offer Name',
    "Offer price"=>'Offer Price',
+   "operation"=>'operation',
+    "update"=>'update',
     "Save Offer"=>'Save',
+    "Upate Your Offer"=>'Update Offer',
+    "Add Your Photo"=>'Add Your Photo',
+
 
 
 

@@ -19,13 +19,6 @@ use Mcamara\LaravelLocalization\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/', function () use ($data) {
-//    return view('welcome',$data);
-//});
-//use Symfony\Component\Routing\Route;
-
-//use Illuminate\Support\Facades\Route;
-
 Route::get('index','Front\FristController@showAdminName1');
 //Route::get('/test1', function () {
 //    return 'welcomes';
@@ -67,49 +60,24 @@ route::group(['namespace' => 'Front'] ,function() {
 //طريقه كتابه ال middleware في group
 //}
 });
-//6route::group(['namespace' => 'Front'] ,function() {
-//    route::get('second1', 'FristController@showAdminName1');
-//});
-//
-//    route::get('login',function()
-//    {
-//        return "must be login dirict";
-//
-//})-> name('login');
-//
-//Route::resource('news','NewsController');
-//    //بعد عمل name باسم login يتم التعرف عليها ويديني نتيجه must be ...etc
-////route::group(['namespace' => 'Front'] ,function() {
-////    route::get('second', 'FristController@showAdminName1');
-////});
-//
-//route::resource('rom','RomsController');
-
-//route::get('login2' ,'RemaController@store');
 route::get('fialable','CrudController@getoffer');
 
-
-            Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)->setLocale(),
-              'middleware' => [ 'localeSessionRedirect',
-              'localizationRedirect','localeViewPath',
-                             ]
-],
-              function(){Route::group(['prefix'=>'offers'],function()
-              {
+  Route::group(['prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)
+  ->setLocale(),
+ 'middleware' => [ 'localeSessionRedirect',
+'localizationRedirect','localeViewPath',
+                ]
+              ],
+function(){Route::group(['prefix'=>'offers'],function()
+    {
 
         Route::get('create','CrudController@create');
         Route::post('store','CrudController@store')-> name('offers.store');
         Route::get('all','CrudController@getAllOffer');
+        Route::get('edit/{offer_id}','CrudController@editOffer');
+        Route::post('update/{offer_id}','CrudController@updateOffer')-> name('offers.update');
     });
 });
 Route::get('hala', function () {
   return view('dashboard');
 });
-
-
-// Route::group([
-//     'prefix' => (new Mcamara\LaravelLocalization\LaravelLocalization)->setLocale(),
-//     //'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-// ], function () {
-    //route::get('create','CrudController@create');
-//});

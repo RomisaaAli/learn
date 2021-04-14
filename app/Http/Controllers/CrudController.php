@@ -12,17 +12,6 @@ use Illuminate\Routing\Controller;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Mcamara\LaravelLocalization\LaravelLocalization;
-
-//use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-
-//use Mcamara\LaravelLocalization\LaravelLocalization;
-
-//use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-
-//use Mcamara\LaravelLocalization\LaravelLocalization;
-
-//use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-
 class CrudController extends Controller
 {
 //    public function getoffer()
@@ -47,7 +36,13 @@ public function create()
     {
 
 
-        //validate data before insert to database
+        //validate data before insert to database in offerrequest
+        //save photo in folder
+        $file_extension = $request -> photo -> getClientOriginalExtension();
+        $file_name=time().$file_extension;
+        $path= 'images/offers';
+        $request-> photo ->move($path,$file_name);
+        return "ok";
         Offer::create([
             'id'=>$request->id,
             'name_en'=>$request ->name_en,
@@ -62,8 +57,28 @@ public function create()
        ('id',
        'price',
        'name_' . (new \Mcamara\LaravelLocalization\LaravelLocalization)
-       ->getCurrentLocale() . ' as name' )->get();
+       ->setLocale() . ' as name' )->get();
        return view('offers.all',compact('offers'));
+    }
+    public function editOffer($offer_id)
+    {
+         $offer=Offer::find($offer_id);
+        if(!$offer)
+        return redirect( ) -> back();
+         $offer=Offer::select('id','name_en','name_ar','price') ->find($offer_id);
+         return view('offers.edit',compact('offer'));
+         return $offer_id;
+
+
+    }
+    public function updateOffer(OfferRequest $request ,$offer_id){
+         $offer=Offer::find($offer_id);
+        $offer->update($request -> all());
+        return redirect() -> back()-> with(['success'=>'تم التحديث بنجاح']);
+        if(!$offer)
+        return redirect() -> back();
+        //تعديل حقول معينه ف db
+        // $offer->update([ name_en=>$request->name_en])
     }
 }
 

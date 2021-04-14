@@ -26,6 +26,10 @@ return [
 "Offer Name"=>'اسم العرض',
 "Offer price"=>'سعر العرض',
 "Save Offer"=>'حفظ',
+"operation"=>'العمليات',
+"update"=>'تحديث',
+"Upate Your Offer"=>'تعديل العرض',
+"Add Your Photo"=>'إضافة صورة',
 
 ];
 
