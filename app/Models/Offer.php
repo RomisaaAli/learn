@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offer extends Model
 {
-    protected $fillable=['id','name_en', 'name_ar','price'];
+    protected $fillable=['id','photo','name_en', 'name_ar','price'];
     protected $hidden=['created_at','updated_at'];
     public $timestamps=false;
 

@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 //use App\Http\Requests\RemaRequest;
 //use LaravelLocalization;
+//use app\Traits\OfferTrait;
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
+//use OfferTrait;
+use app\Traits\OfferTrait;
 use http\Message;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -14,7 +17,9 @@ use Illuminate\Support\Facades\Validator;
 use Mcamara\LaravelLocalization\LaravelLocalization;
 class CrudController extends Controller
 {
-//    public function getoffer()
+
+//
+  // public function getoffer()S
 //    {
 //return  Offer::get();
 //    }
@@ -38,12 +43,10 @@ public function create()
 
         //validate data before insert to database in offerrequest
         //save photo in folder
-        $file_extension = $request -> photo -> getClientOriginalExtension();
-        $file_name=time().$file_extension;
-        $path= 'images/offers';
-        $request-> photo ->move($path,$file_name);
-        return "ok";
+        $file_name=$this->SaveImage($request->photo,'images/offers');
+
         Offer::create([
+            'photo'=>$file_name,
             'id'=>$request->id,
             'name_en'=>$request ->name_en,
             'name_ar'=>$request ->name_ar,
@@ -80,5 +83,7 @@ public function create()
         //تعديل حقول معينه ف db
         // $offer->update([ name_en=>$request->name_en])
     }
+
+
 }
 

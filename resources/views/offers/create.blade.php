@@ -113,9 +113,8 @@
                 </div>
                 <div class="form-group">
                     <label for="disabledTextInput"> {{__('masseges.Add Your Photo')}}</label>
-                    <input type="file"  class="form-control" name="photo" placeholder=
-                    "{{__('masseges.Add Your Photo')}}">
-                    @error('name_en')
+                    <input type="file" class="form-control" name="photo">
+                    @error('photo')
                     <small class=" form-text text-danger" >{{$message}}</small>
                     @enderror
                 </div>
